@@ -1,21 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
 
-    <ul>
-        <li class="button" id="red">Red</li>
-        <li class="button" id="green">Green</li>
-        <li class="button" id="yellow">Yellow</li>
-        <li class="button" id="orange">Orange</li>
+  <style>
+    body {
+      height: 90vh;
+    }
+
+    .color-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 5rem;
+      justify-content: center;
+      position: relative;
+      top: 50%;
+    }
+
+    .button {
+      width: 50%;
+      border: 2px solid;
+      border-radius: 5px;
+      text-align: center;
+      padding: 25px;
+    }
+
+    #red {
+      background-color: red;
+      color: #fff;
+    }
+    #green {
+      background-color: green;
+      color: #fff;
+    }
+    #yellow {
+      background-color: yellow;
+      color: #fff;
+    }
+    #orange {
+      background-color: orange;
+      color: #fff;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .color-list {
+        grid-template-columns: 1fr;
+        gap: 5rem;
+        position: relative;
+        top: 50%;
+      }
+      .button {
+        width: 75%;
+      }
+    }
+  </style>
+
+  <body>
+    <ul class="color-list">
+      <li class="button" id="red">Red</li>
+      <li class="button" id="green">Green</li>
+      <li class="button" id="yellow">Yellow</li>
+      <li class="button" id="orange">Orange</li>
     </ul>
-    
-</body>
+  </body>
 
-<script src="./index.js"></script>
-
+  <script src="./index.js"></script>
 </html>
