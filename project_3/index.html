@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        background-color: #212121;
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .nav-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .nav-items {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5px;
+    }
+
+    .nav-items>.nav-list {
+        list-style-type: none;
+    }
+
+    .nav-list>a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .nav-list>a:hover {
+        text-decoration: none;
+        color: blue;
+        font-weight: 500;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .heading {
+        font-size: 45px;
+        border-bottom: 2px dashed #fff;
+    }
+
+    #clock {
+        font-size: 50px;
+        text-align: center;
+        font-weight: 500;
+        background-color: #fff;
+        height: 150px;
+        width: 250px;
+        color: #212121;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+
+    <nav class="nav-bar">
+        <h2 class="logo">Dc</h2>
+        <ul class="nav-items">
+            <li class="nav-list"><a href="https://github.com/amanshridev" target="_blank">Github</a></li>
+            <li class="nav-list"><a href="https://x.com/mailtoamanshri" target="_blank">Twitter</a></li>
+            <li class="nav-list"><a href="https://www.linkedin.com/in/aman180796/" target="_blank">LinkedIn</a></li>
+        </ul>
+    </nav>
+
+    <section class="container">
+        <h1 class="heading">Digital Clock JavaScript Project</h1>
+        <div id="clock"></div>
+    </section>
+
+</body>
+<script src="./index.js"></script>
+
+</html>
