@@ -19,6 +19,7 @@ saveItem.addEventListener("click", function () {
   } else if (!isDuplicate(inputValue)) {
     addItem(inputValue);
     saveToLocalStorage(inputValue);
+    main.setAttribute("class", 'list-style')
     todoItem.value = ""; // Resetting input field to empty after adding todo
   } else {
     alert("Item already exists!");
@@ -33,7 +34,7 @@ function addItem(value) {
 
   let deleteBtn = document.createElement("button");
   deleteBtn.setAttribute("class", "delete");
-  deleteBtn.innerHTML = "Delete";
+  deleteBtn.innerHTML = "x";
   deleteBtn.addEventListener("click", function () {
     div.remove();
     deleteFromLocalStorage(value);
@@ -48,6 +49,9 @@ function saveToLocalStorage(item) {
   let items = JSON.parse(localStorage.getItem("todoList")) || [];
   items.push(item);
   localStorage.setItem("todoList", JSON.stringify(items));
+  if(!item){
+    main.removeAttribute("class", 'list-style')
+  }
 }
 
 // Load items from local storage and display them
