@@ -1,45 +1,72 @@
-// console.log("working")
-
 let todoItem = document.getElementById("todo-item");
 let saveItem = document.getElementById("submit");
 let app = document.getElementById("app");
+let main = document.createElement("main");
+main.setAttribute("id", "main");
+app.appendChild(main);
 
+// Load items from local storage when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  gettingLocalStorage();
+});
+
+// Function to save a new todo item
 saveItem.addEventListener("click", function () {
   let inputValue = todoItem.value;
 
-
-//Created main element
-  let main = document.createElement("main");
-  main.setAttribute("id", "main");
-  app.appendChild(main);
-
   if (inputValue === "") {
     alert("Enter Something");
+  } else if (!isDuplicate(inputValue)) {
+    addItem(inputValue);
+    saveToLocalStorage(inputValue);
+    todoItem.value = ""; // Resetting input field to empty after adding todo
   } else {
-    //Created div element
-    let div = document.createElement("div");
-    div.setAttribute("id", "addedValue");
-    //Set Value to div element
-    div.innerHTML = inputValue;
-    main.appendChild(div);
-    //Created Delete button
-    let deleteBtn = document.createElement("button");
-    deleteBtn.setAttribute("id", "delete");
-    //Added delete fun
-    deleteBtn.innerHTML = "Delete";
-    main.appendChild(deleteBtn);
-    deleteBtn.addEventListener("click", function () {
-      let removeMain = document.querySelector("#main");
-      removeMain.remove();
-    });
+    alert("Item already exists!");
   }
-  //Resetting input field to empty after adding todo
-  todoItem.value = "";
 });
 
+// Function to create and add a new item to the DOM
+function addItem(value) {
+  let div = document.createElement("div");
+  div.setAttribute("class", "addedValue");
+  div.innerHTML = value;
 
-//TODO in  project
+  let deleteBtn = document.createElement("button");
+  deleteBtn.setAttribute("class", "delete");
+  deleteBtn.innerHTML = "Delete";
+  deleteBtn.addEventListener("click", function () {
+    div.remove();
+    deleteFromLocalStorage(value);
+  });
 
-//1: Adding local storage
-//2: Adding Complete Check
-//3: Adding Style
+  div.appendChild(deleteBtn);
+  main.appendChild(div);
+}
+
+// Save the list of items to local storage
+function saveToLocalStorage(item) {
+  let items = JSON.parse(localStorage.getItem("todoList")) || [];
+  items.push(item);
+  localStorage.setItem("todoList", JSON.stringify(items));
+}
+
+// Load items from local storage and display them
+function gettingLocalStorage() {
+  let items = JSON.parse(localStorage.getItem("todoList")) || [];
+  items.forEach((item) => {
+    addItem(item);
+  });
+}
+
+// Delete an item from local storage
+function deleteFromLocalStorage(item) {
+  let items = JSON.parse(localStorage.getItem("todoList")) || [];
+  items = items.filter((todo) => todo !== item);
+  localStorage.setItem("todoList", JSON.stringify(items));
+}
+
+// Check if the item is a duplicate
+function isDuplicate(item) {
+  let items = JSON.parse(localStorage.getItem("todoList")) || [];
+  return items.includes(item);
+}
