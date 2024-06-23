@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav-bar">
+        <h2 class="logo">Guessing Game</h2>
+        <ul class="nav-items">
+            <li class="nav-list"><a href="https://github.com/amanshridev" target="_blank">Github</a></li>
+            <li class="nav-list"><a href="https://x.com/mailtoamanshri" target="_blank">Twitter</a></li>
+            <li class="nav-list"><a href="https://www.linkedin.com/in/aman180796/" target="_blank">LinkedIn</a></li>
+        </ul>
+    </nav>
+    <section class="container">
+        <h1 class="heading">Guessing Game</h1>
+        <form class="form">
+            <label class="input-text">Enter the Guessing Number</label>
+            <input type="text" name="number" id="input-value" autocomplete="off">
+            <input type="submit" id="submit-btn" value="Enter You Guess">
+        </form>
+
+        <div class="result">
+            <p>Numbers You Entered: [<span class="entered-number"></span>]</p>
+            <p>Total Attempts Remaining: <span class="remaining-turn">10</span></p>
+            <div class="lowOrHi"></div>
+        </div>
+    </section>
+</body>
+<script src="./index.js"></script>
+</html>
